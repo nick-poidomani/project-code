@@ -1,0 +1,13 @@
+Short Summary of the source code in this repo
+
+Homework 1: Reads a csv file into a struct and prints the members of the struct.
+
+Homework 2: Does the fibonacci sequence on 50 digit numbers. 
+
+Homework 3: Converts latitude and longitude(base 60) to a decimal value(base 10). 
+
+Homework 4: Sorts a list of structs alphabetically and geographically from S to N.
+
+CacheProject: Emulates a cache with given parameters. 
+
+Gsharepredictor: Emulates a G-share branch predictor with the given parameters
