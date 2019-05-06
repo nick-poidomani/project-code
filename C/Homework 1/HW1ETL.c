@@ -11,6 +11,7 @@ airPdata a;
 
 
 void main(int argc, char **argv) {
+	
 	int i;
 	for (i = 0; i < argc; i++) {
 		printf("argument %d: %s\n", i, argv[i]);
@@ -18,6 +19,8 @@ void main(int argc, char **argv) {
 	printf("\n");
 	char* fname = argv[1];
 	FILE* file = fopen(fname, "r");
+	
+	//Check to make sure the File opened correctly 
 	if (file == 0) {
 		printf("could not open file\n");
 
@@ -25,26 +28,35 @@ void main(int argc, char **argv) {
 	else {
 		printf("file opened successfully\n");
                 
-                char *str;
-                char* token;
-                char* arr[19];
+                char *str; //A hold buffer for the line being read in
+                char *token; //Each line will be split into tokens 
+                char *arr[19]; //There will be 19 tokens total 
+				
                 rewind(file);
                 printf("%15s%10s%42s%40s%4s%16s%16s%5s\n", "FAA Site#", "Short Name", "Airport Name", "City", "ST", "Latitude", "Longitude", "Tower");
                 printf("%15s%10s%42s%40s%4s%16s%16s%5s\n", "=========", "==========", "============", "====", "==", "========", "=========", "=====");
-                while ( fgets(str, 1000, file) != NULL){
+                
+				//fgets() returns NULL on the EOF 
+				while ( fgets(str, 1000, file) != NULL){
                 int n = 0;    
                 arr[n] = str;
+				
+				//strtok(string, "token") gets the first thing delimited by "token" in string
                 token = strtok(arr[n], ",");
                 a.siteNumber = token;
+				
                 token = strtok(NULL, ",");
                 a.LocID = token;
+				
                 token = strtok(NULL, ",");
                 a.fieldName = token;
+				
                 token = strtok(NULL, ",");
                 a.city = token;
                 
                 token = strtok(NULL, ",");
                 a.state = token;
+				
                 int i = 0;
                 for (i ; i < 4;  i++){
                     token = strtok(NULL,",");
